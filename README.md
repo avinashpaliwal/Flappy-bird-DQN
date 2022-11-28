@@ -1,27 +1,32 @@
-# [PYTORCH] Deep Q-learning for playing Flappy Bird
+# Analysis of image pre-processing for playing Flappy Bird with DQN [CSCE-689].
 
-## Introduction
+<img src="demo/teaser.gif" width=110 align="right"><br/>
 
-Here is my python source code for training an agent to play flappy bird. It could be seen as a very basic example of Reinforcement Learning's application.
-<p align="center">
-  <img src="demo/flappybird.gif" width=600><br/>
-  <i>Result</i>
-</p>
+We analyze the effect of different types of image pre processing techniques on training an RL agent. The task is to learn to Flappy Bird using Deep Q-Learning. You can find more details about the experiments in our report [link to report].
 
-## How to use my code
 
-With my code, you can:
-* **Train your model from scratch** by running **python train.py**
-* **Test your trained model** by running **python test.py**
+## Environment Setup
+```bash
+conda create -n birdRL pytorch==1.0.1 torchvision==0.2.2 cudatoolkit=10.0 -c pytorch
+conda activate birdRL
+conda install tensorboardX
+pip install pygame==1.9.4 opencv-python==3.4.4.19
+```
 
-## Trained models
+## Training
+The folders `Binary`, `Flow`, etc. are the experiments with different image pre-processing. `cd` to any folder and run the following command.
+```bash
+cd Binary
+python train.py
+```
+You can check the tensorboard logs using:
+```bash
+tensorboard --logdir .
+```
 
-You could find my trained model at **trained_models/flappy_bird**
- 
-## Requirements
-
-* **python 3.6**
-* **pygame**
-* **cv2**
-* **pytorch** 
-* **numpy**
+# Testing
+Similar to training:
+```bash
+cd Binary
+python test.py
+```
